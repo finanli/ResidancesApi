@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RezidaslarMVCkatman.Models.mvcBloklarModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "EY")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlokAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazaNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KatSayi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlokAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazaNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KatSayi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EY", new {  id=item.BlokNo  }) |
+
+            @Html.ActionLink("Sil", "Delete", new { id = item.BlokNo })
+        </td>
+    </tr>
+}
+
+</table>

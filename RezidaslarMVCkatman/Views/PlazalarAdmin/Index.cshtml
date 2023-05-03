@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RezidaslarMVCkatman.Models.mvcPlazalarModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "EY")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazaAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlokSayi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sehir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adres)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlokSayi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sehir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adres)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EY", new { id=item.plazaNo}) |
+
+            @Html.ActionLink("Sil", "Delete", new { id = item.plazaNo })
+        </td>
+    </tr>
+}
+
+</table>

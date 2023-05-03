@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Rezidanslar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Admin Ekranı", "About", "Home")</li>
+                    <li>@Html.ActionLink("Kullanıcı Ekranı", "Contact", "Home")</li>
+                </ul>*@
+                <ul class="nav navbar-nav" style="float:right !important">
+                    @if (Session["KullaniciAdi"] != null)
+                    {
+                        @*<ul class="nav navbar-nav">
+                        </ul>*@
+                            if (Session["KullaniciAdi"] != null && Session["KullaniciAdi"].ToString() == "admin")
+                            {
+                               <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Plazalar Ekranı", "Index", "PlazalarAdmin")</li>
+                                <li>@Html.ActionLink("Bloklar Ekranı", "Index", "BloklarAdmin")</li>
+                                <li>@Html.ActionLink("Personeller Ekranı", "Index", "PersonellerAdmin")</li>
+                                <li>@Html.ActionLink("Hizmetler Ekranı", "Index", "HizmetlerAdmin")</li>
+                                <li>@Html.ActionLink("Görevler Ekranı", "Index", "GorevlerAdmin")</li>
+                               </ul>
+
+
+                                @*<li><p style="color: #fff; margin-top:15px;">Hoşgeldin @Session["kullaniciAdi"]</p></li>
+            <li>@Html.ActionLink("Logout", "Logout", "Home")</li>*@
+
+                            }
+
+                            else
+                            {
+                            <ul class="nav navbar-nav">
+                                 @*<li>@Html.ActionLink("Plazalar Ekranı", "Index", "PlazalarKullanici")</li>*@
+                                 @*<li>@Html.ActionLink("Bloklar Ekranı", "Index", "BloklarKullanici")</li>*@
+                                 <li>@Html.ActionLink("Personeller Ekranı", "Index", "PersonellerKullanici")</li>
+                                 <li>@Html.ActionLink("Hizmetler Ekranı", "Index", "HizmetlerKullanici")</li>
+                                 <li>@Html.ActionLink("Görevler Ekranı", "Index", "GorevlerKullanici")</li>
+                            </ul>
+
+                            }
+                            
+                                <li><p style="color: #fff; margin-top:15px;">Hoşgeldin @Session["KullaniciAdi"]</p></li>
+                                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                            
+                     }
+                        
+                    
+                    else
+                    {
+                        
+                        <li>@Html.ActionLink("Signup", "SignUp", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
